@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+/* General body styling for chat interface */
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #1e1e1e, #333);
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Animated gradient background */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #1e1e1e, #333, #005bb5, #0078d7, #2a2a2a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Chat container styling - Full screen */
+.chat-container {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: rgba(42, 42, 42, 0.8); /* Slightly transparent to show gradient */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.chat-container:hover {
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Chat header styling */
+h2 {
+  text-align: center;
+  padding: 16px;
+  margin: 0;
+  background-color: rgba(58, 59, 60, 0.9);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+}
+
+h2:hover {
+  background-color: rgba(75, 76, 77, 0.9);
+}
+
+/* Chat message box styling */
+.chat-box {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: rgba(30, 30, 30, 0.85); /* Slightly transparent */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth fade-in for new messages */
+.message {
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-radius: 18px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  max-width: 75%;
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* User message styling (aligned to the right) */
+.message.user {
+  align-self: flex-end;
+  background-color: rgba(0, 120, 215, 0.9);
+  color: #ffffff;
+  border-top-right-radius: 0;
+  text-align: left;
+}
+
+.message.user:hover {
+  box-shadow: 0 0 10px rgba(0, 120, 215, 0.6);
+}
+
+/* Bot message styling (aligned to the left) */
+.message.bot {
+  align-self: flex-start;
+  background-color: rgba(51, 51, 51, 0.9);
+  color: #e0e0e0;
+  border-top-left-radius: 0;
+  text-align: left;
+  border: 1px solid rgba(68, 68, 68, 0.8);
+}
+
+.message.bot:hover {
+  box-shadow: 0 0 10px rgba(150, 150, 150, 0.5);
+}
+
+/* Input container styling */
+.input-container {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid rgba(51, 51, 51, 0.8);
+  background-color: rgba(42, 42, 42, 0.9);
+}
+
+/* User input field styling */
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgba(68, 68, 68, 0.8);
+  border-radius: 20px;
+  background: rgba(51, 51, 51, 0.9);
+  color: #e0e0e0;
+  outline: none;
+  margin-right: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+#user-input:focus {
+  border-color: #0078d7;
+  box-shadow: 0 0 5px rgba(0, 120, 215, 0.4);
+}
+
+/* Send button styling with glow effect */
+button {
+  padding: 10px 16px;
+  background-color: #0078d7;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5;
+  box-shadow: 0 0 10px rgba(0, 120, 215, 0.6);
+}
+
+/* Adding glow effect to the button on hover */
+button:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+button:hover:before {
+  opacity: 1;
+}
+
+/* Scrollbar customization */
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
