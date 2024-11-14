@@ -16,16 +16,17 @@ app.use(express.json());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
-// API Routes
+// Define API Routes
 app.post("/ask", chatController.ask);
 app.get("/history", chatController.history);
+app.delete("/history/:id", chatController.deleteConversation);
 
 // Fallback route to serve index.html for all other GET requests
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Start Server
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

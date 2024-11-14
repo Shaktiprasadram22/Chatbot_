@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatbot Interface</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="chat-container">
-    <h2>AI Chatbot</h2>
-    <div id="chat-box" class="chat-box"></div>
-    <div class="input-container">
-      <input type="text" id="user-input" placeholder="Type your question here..." />
-      <button onclick="sendMessage()">Send</button>
+  <div class="container">
+    <!-- Sidebar for History -->
+    <div class="history-sidebar">
+      <h3>Conversation History</h3>
+      <div id="history-box" class="history-box"></div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="chat-container">
+      <h2>AI Chatbot</h2>
+      <div id="chat-box" class="chat-box"></div>
+      <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your question here..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
