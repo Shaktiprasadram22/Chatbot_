@@ -2,16 +2,15 @@
   "name": "your-app-name",
   "version": "1.0.0",
   "description": "A brief description of your project",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "chmod +x node_modules/.bin/*"
+    "start": "node app.js"
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "react-scripts": "^5.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongodb": "^5.9.2",
     "openai": "^4.71.1",
     "together-ai": "^0.9.0"
   },
