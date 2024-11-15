@@ -114,6 +114,20 @@ document
       sendMessage();
     }
   });
+function toggleTheme() {
+  const body = document.body;
+  const toggleButton = document.getElementById("theme-toggle");
+
+  // Toggle the dark-mode class on the body
+  body.classList.toggle("dark-mode");
+
+  // Update the button text
+  if (body.classList.contains("dark-mode")) {
+    toggleButton.textContent = "Switch to Light Mode";
+  } else {
+    toggleButton.textContent = "Switch to Dark Mode";
+  }
+}
 
 // Automatically load history on page load
 window.onload = loadHistory;
